@@ -1,0 +1,77 @@
+﻿@page "/books"
+
+<h1>Список книг</h1>
+<link href="css/site.css" rel="stylesheet" />
+
+<table class="book-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Автор ID</th>
+            <th>Издатель ID</th>
+            <th>Категория ID</th>
+            <th>Год публикации</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in BookList)
+        {
+            <tr>
+                <td>@book.BookID</td>
+                <td>@book.Title</td>
+                <td>@book.AuthorID</td>
+                <td>@book.PublisherID</td>
+                <td>@book.CategoryID</td>
+                <td>@book.PublicationYear</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    @code {
+        // Список книг
+        private List<Books> BookList = new List<Books>
+    {
+        new Books
+        {
+            BookID = 1,
+            Title = "Война и мир",
+            AuthorID = 1,
+            PublisherID = 1,
+            CategoryID = 1,
+            PublicationYear = 1869
+        },
+        new Books
+        {
+            BookID = 2,
+            Title = "Преступление и наказание",
+            AuthorID = 2,
+            PublisherID = 2,
+            CategoryID = 2,
+            PublicationYear = 1866
+        },
+        new Books
+        {
+            BookID = 3,
+            Title = "1984",
+            AuthorID = 3,
+            PublisherID = 3,
+            CategoryID = 3,
+            PublicationYear = 1949
+        }
+    };
+
+        // Класс Books
+        public class Books
+        {
+            public int BookID { get; set; }
+            public string Title { get; set; } = null!;
+            public int AuthorID { get; set; }
+            public int PublisherID { get; set; }
+            public int CategoryID { get; set; }
+            public int PublicationYear { get; set; }
+        }
+    }
+}
